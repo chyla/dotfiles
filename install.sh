@@ -10,13 +10,8 @@ fi
 
 
 if [ "x$1" = "x" ]; then
-    echo "home path not specified as parameter"
-    echo -n "use '${HOME}'? (y/n): "
-    read RESPONSE
-
-    if [ "x${RESPONSE}" = "xy" ]; then
-        USER_HOME=${HOME}
-    fi
+    echo "home path not specified as parameter, using ${HOME}"
+    USER_HOME=${HOME}
 else
     USER_HOME="$1"
 fi
