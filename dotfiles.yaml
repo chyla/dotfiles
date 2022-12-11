@@ -1,0 +1,48 @@
+- name: "dotfiles configuration"
+  hosts: localhost
+  tasks:
+    - name: ".bashrc: source customization functions"
+      lineinfile:
+        line: source /{{ REPO_PATH }}/bash/dot_bashrc_customization
+        dest: /{{ HOME_PATH }}/.bashrc
+    - name: ".bashrc: init all customizations"
+      lineinfile:
+        line: dotfiles_init_all
+        insertafter: source /{{ REPO_PATH }}/bash/dot_bashrc_customization
+        dest: /{{ HOME_PATH }}/.bashrc
+
+    - name: ".gitconfig: init section"
+      lineinfile:
+        line: "[init]"
+        dest: /{{ HOME_PATH }}/.gitconfig
+    - name: ".gitconfig: init default branch"
+      lineinfile:
+        regexp: "\\s*defaultBranch =.*"
+        line: "        defaultBranch = main"
+        insertafter: "[init]"
+        dest: /{{ HOME_PATH }}/.gitconfig
+    - name: ".gitconfig: core section"
+      lineinfile:
+        line: "[core]"
+        dest: /{{ HOME_PATH }}/.gitconfig
+    - name: ".gitconfig: core excludesfile"
+      lineinfile:
+        regexp: "\\s*excludesfile =.*"
+        line: "        excludesfile = /{{ REPO_PATH }}/git/excludesfile"
+        insertafter: "[core]"
+        dest: /{{ HOME_PATH }}/.gitconfig
+    - name: ".gitconfig: include section"
+      lineinfile:
+        line: "[include]"
+        dest: /{{ HOME_PATH }}/.gitconfig
+    - name: ".gitconfig: include aliases"
+      lineinfile:
+        line: "        path = /{{ REPO_PATH }}/git/alias"
+        insertafter: "[include]"
+        dest: /{{ HOME_PATH }}/.gitconfig
+
+    - name: ".pylintrc"
+      file:
+        src: /{{ REPO_PATH }}/pylint/dot_pylintrc
+        dest: /{{ HOME_PATH }}/.pylintrc
+        state: link

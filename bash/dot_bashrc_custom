@@ -1,0 +1,61 @@
+dotfiles_custom_PS1 () {
+    # tool to generate PS1: https://bashrcgenerator.com/
+    # [date] directory exit_status$
+    PS1="\[\033[00m\][\t] \[\033[01;34m\]\W\[\033[00m\] \[\033[31m\]\$?\[\033[00m\]$\[$(tput sgr0)\] "
+}
+
+
+dotfiles_init_pyenv () {
+    if [ "${PYENV_DIR}x" == "x" ] ; then
+        PYENV_DIR="$HOME/.pyenv/bin"
+    fi
+
+    PATH="$PYENV_DIR:$PATH"
+    eval "$(pyenv virtualenv-init -)"
+    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
+}
+
+
+dotfiles_dont_write_python_bytecode () {
+    export PYTHONDONTWRITEBYTECODE=x
+}
+
+
+dotfiles_alias_man () {
+    alias ?='man'
+}
+
+
+dotfiles_alias_ll () {
+    alias ll='ls -hal --time-style=long-iso'
+}
+
+
+dotfiles_alias_cd () {
+    alias cd..='cd ..'
+}
+
+
+dotfiles_alias_cls () {
+    alias cls='clear'
+}
+
+
+dotfiles_alias_omtt () {
+    alias omtt='0install run omtt'
+}
+
+
+dotfiles_init_all () {
+    dotfiles_custom_PS1
+    dotfiles_init_pyenv
+    dotfiles_dont_write_python_bytecode
+
+    dotfiles_alias_man
+    dotfiles_alias_ll
+    dotfiles_alias_cd
+    dotfiles_alias_cls
+
+    dotfiles_alias_omtt
+}
