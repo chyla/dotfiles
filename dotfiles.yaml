@@ -19,7 +19,7 @@
       lineinfile:
         regexp: "\\s*defaultBranch =.*"
         line: "        defaultBranch = main"
-        insertafter: "[init]"
+        insertafter: "\\[init\\]"
         dest: /{{ HOME_PATH }}/.gitconfig
     - name: ".gitconfig: commit section"
       lineinfile:
@@ -29,7 +29,7 @@
       lineinfile:
         regexp: "\\s*gpgSign =.*"
         line: "        gpgSign = true"
-        insertafter: "[commit]"
+        insertafter: "\\[commit\\]"
         dest: /{{ HOME_PATH }}/.gitconfig
     - name: ".gitconfig: remote origin section"
       lineinfile:
@@ -39,7 +39,7 @@
       lineinfile:
         regexp: "\\s*tagOpt =.*"
         line: "        tagOpt = --tags"
-        insertafter: '[remote "origin"]'
+        insertafter: '\\[remote "origin"\\]'
         dest: /{{ HOME_PATH }}/.gitconfig
     - name: ".gitconfig: core section"
       lineinfile:
@@ -49,7 +49,7 @@
       lineinfile:
         regexp: "\\s*excludesfile =.*"
         line: "        excludesfile = /{{ REPO_PATH }}/git/excludesfile"
-        insertafter: "[core]"
+        insertafter: "\\[core\\]"
         dest: /{{ HOME_PATH }}/.gitconfig
     - name: ".gitconfig: include section"
       lineinfile:
@@ -58,7 +58,7 @@
     - name: ".gitconfig: include aliases"
       lineinfile:
         line: "        path = /{{ REPO_PATH }}/git/alias"
-        insertafter: "[include]"
+        insertafter: "\\[include\\]"
         dest: /{{ HOME_PATH }}/.gitconfig
 
     - name: ".pylintrc"
