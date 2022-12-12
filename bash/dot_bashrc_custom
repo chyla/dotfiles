@@ -22,6 +22,20 @@ dotfiles_dont_write_python_bytecode () {
 }
 
 
+dotfiles_history_include_lines_begining_with_space () {
+    export HISTCONTROL=
+}
+
+
+dotfiles_history_increase_size () {
+    export HISTFILESIZE=1000
+    export HISTSIZE=${HISTFILESIZE}
+}
+
+dotfiles_history_sync_before_command () {
+    export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+}
+
 dotfiles_alias_man () {
     alias ?='man'
 }
@@ -51,6 +65,10 @@ dotfiles_init_all () {
     dotfiles_custom_PS1
     dotfiles_init_pyenv
     dotfiles_dont_write_python_bytecode
+
+    dotfiles_history_include_lines_begining_with_space
+    dotfiles_history_increase_size
+    dotfiles_history_sync_before_command
 
     dotfiles_alias_man
     dotfiles_alias_ll
