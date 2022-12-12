@@ -21,6 +21,16 @@
         line: "        defaultBranch = main"
         insertafter: "[init]"
         dest: /{{ HOME_PATH }}/.gitconfig
+    - name: ".gitconfig: remote origin section"
+      lineinfile:
+        line: '[remote "origin"]'
+        dest: /{{ HOME_PATH }}/.gitconfig
+    - name: ".gitconfig: remote origin tagOpt"
+      lineinfile:
+        regexp: "\\s*tagOpt =.*"
+        line: "        tagOpt = --tags"
+        insertafter: '[remote "origin"]'
+        dest: /{{ HOME_PATH }}/.gitconfig
     - name: ".gitconfig: core section"
       lineinfile:
         line: "[core]"
