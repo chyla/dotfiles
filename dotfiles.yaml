@@ -21,6 +21,16 @@
         line: "        defaultBranch = main"
         insertafter: "[init]"
         dest: /{{ HOME_PATH }}/.gitconfig
+    - name: ".gitconfig: commit section"
+      lineinfile:
+        line: '[commit]'
+        dest: /{{ HOME_PATH }}/.gitconfig
+    - name: ".gitconfig: commit gpgSign"
+      lineinfile:
+        regexp: "\\s*gpgSign =.*"
+        line: "        gpgSign = true"
+        insertafter: "[commit]"
+        dest: /{{ HOME_PATH }}/.gitconfig
     - name: ".gitconfig: remote origin section"
       lineinfile:
         line: '[remote "origin"]'
