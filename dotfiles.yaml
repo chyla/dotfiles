@@ -15,6 +15,7 @@
       lineinfile:
         line: "[init]"
         dest: /{{ HOME_PATH }}/.gitconfig
+        create: true
     - name: ".gitconfig: init default branch"
       lineinfile:
         regexp: "\\s*defaultBranch =.*"
