@@ -27,7 +27,7 @@ fi
 
 echo "user home: ${USER_HOME}"
 echo "repo path: ${REPO_PATH}"
-echo -n "correct? (y/n): "
+echo -n "correct? (y/N): "
 read RESPONSE
 
 if [ "x${RESPONSE}" = "xy" ]; then
@@ -37,4 +37,6 @@ if [ "x${RESPONSE}" = "xy" ]; then
         --extra-var HOME_PATH="${USER_HOME}" \
         --extra-var REPO_PATH="${REPO_PATH}" \
         dotfiles.yaml
+else
+    echo "Aborted by user."
 fi
