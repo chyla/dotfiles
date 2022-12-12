@@ -10,10 +10,12 @@ dotfiles_init_pyenv () {
         PYENV_DIR="$HOME/.pyenv/bin"
     fi
 
-    PATH="$PYENV_DIR:$PATH"
-    eval "$(pyenv virtualenv-init -)"
-    eval "$(pyenv init -)"
-    eval "$(pyenv init --path)"
+    if [ -e "${PYENV_DIR}" ] ; then
+        PATH="$PYENV_DIR:$PATH"
+        eval "$(pyenv virtualenv-init -)"
+        eval "$(pyenv init -)"
+        eval "$(pyenv init --path)"
+    fi
 }
 
 
