@@ -9,11 +9,8 @@ if ! command -v ansible-playbook > /dev/null; then
 fi
 
 
-if [ "x$1" = "x" ]; then
-    echo "home path not specified as parameter, using ${HOME}"
+if [ "x${USER_HOME}" = "x" ]; then
     USER_HOME=${HOME}
-else
-    USER_HOME="$1"
 fi
 
 
@@ -23,7 +20,9 @@ if [ "x${USER_HOME}" = "x" ]; then
 fi
 
 
-REPO_PATH="$(dirname $(realpath $0))"
+if [ "x${REPO_PATH}" = "x" ]; then
+    REPO_PATH="$(dirname $(realpath $0))"
+fi
 
 
 echo "user home: ${USER_HOME}"
