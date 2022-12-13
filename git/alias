@@ -1,3 +1,4 @@
 [alias]
         flog = log --show-signature --pretty=fuller --date=format:'%d-%m-%Y %H:%M:%S %z (%A, %d %b)'
         st = status
+        c = commit
