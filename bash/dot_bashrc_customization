@@ -34,10 +34,6 @@ dotfiles_history_increase_size () {
     export HISTSIZE=${HISTFILESIZE}
 }
 
-dotfiles_history_sync_before_command () {
-    export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
-}
-
 dotfiles_alias_man () {
     alias ?='man'
 }
@@ -70,7 +66,6 @@ dotfiles_init_all () {
 
     dotfiles_history_include_lines_begining_with_space
     dotfiles_history_increase_size
-    dotfiles_history_sync_before_command
 
     dotfiles_alias_man
     dotfiles_alias_ll
