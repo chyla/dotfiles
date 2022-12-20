@@ -30,7 +30,7 @@ dotfiles_history_include_lines_begining_with_space () {
 
 
 dotfiles_history_increase_size () {
-    export HISTFILESIZE=1000
+    export HISTFILESIZE=5000
     export HISTSIZE=${HISTFILESIZE}
 }
 
