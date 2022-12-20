@@ -39,8 +39,13 @@ dotfiles_alias_man () {
 }
 
 
+dotfiles_alias_la () {
+    alias la='ls -hal --time-style=long-iso'
+}
+
+
 dotfiles_alias_ll () {
-    alias ll='ls -hal --time-style=long-iso'
+    alias ll='ls -hl --time-style=long-iso'
 }
 
 
@@ -68,6 +73,7 @@ dotfiles_init_all () {
     dotfiles_history_increase_size
 
     dotfiles_alias_man
+    dotfiles_alias_la
     dotfiles_alias_ll
     dotfiles_alias_cd
     dotfiles_alias_cls
