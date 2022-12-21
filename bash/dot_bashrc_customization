@@ -49,6 +49,11 @@ dotfiles_alias_ll () {
 }
 
 
+dotfiles_alias_apt_sysupgrade () {
+    alias apt-sysupgrade='sudo -- sh -c "apt-get update && apt-get dist-upgrade"'
+}
+
+
 dotfiles_alias_cd () {
     alias cd..='cd ..'
 }
@@ -75,6 +80,7 @@ dotfiles_init_all () {
     dotfiles_alias_man
     dotfiles_alias_la
     dotfiles_alias_ll
+    dotfiles_alias_apt_sysupgrade
     dotfiles_alias_cd
     dotfiles_alias_cls
 
