@@ -40,12 +40,12 @@ dotfiles_alias_man () {
 
 
 dotfiles_alias_la () {
-    alias la='ls -hal --time-style=long-iso'
+    alias la='ls --time-style=long-iso --group-directories-first -hla'
 }
 
 
 dotfiles_alias_ll () {
-    alias ll='ls -hl --time-style=long-iso'
+    alias ll='ls --time-style=long-iso --group-directories-first -hl'
 }
 
 
