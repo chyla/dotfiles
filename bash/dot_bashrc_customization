@@ -34,6 +34,12 @@ dotfiles_history_increase_size () {
     export HISTSIZE=${HISTFILESIZE}
 }
 
+
+dotfiles_alias_e () {
+   alias e='emacs -nw'
+}
+
+
 dotfiles_alias_man () {
     alias ?='man'
 }
@@ -77,6 +83,7 @@ dotfiles_init_all () {
     dotfiles_history_include_lines_begining_with_space
     dotfiles_history_increase_size
 
+    dotfiles_alias_e
     dotfiles_alias_man
     dotfiles_alias_la
     dotfiles_alias_ll
