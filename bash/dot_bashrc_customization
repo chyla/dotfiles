@@ -35,6 +35,40 @@ dotfiles_history_increase_size () {
 }
 
 
+dotfiles_func_md2 () {
+    OUTPUT_FORMAT=$1
+    INPUT_FILE=$2
+    OUTPUT_FILE=$3
+
+    if [ "x$INPUT_FILE" = "x" ] ; then
+       echo "no input file" >&2
+       return 1
+    fi
+
+    if [ "x$OUTPUT_FILE" = "x" ] ; then
+       echo "no output file" >&2
+       return 1
+    fi
+
+    if command -v pandoc &> /dev/null ; then
+        pandoc --from=markdown --to="$OUTPUT_FORMAT" -output="$OUTPUT_FILE" "$INPUT_FILE"
+    else
+        echo "pandoc not found, install with: sudo apt install pandoc"
+        return 1
+    fi
+}
+
+
+dotfiles_alias_md2docx () {
+    alias md2docx='dotfiles_func_md2 docx'
+}
+
+
+dotfiles_alias_md2pdf () {
+    alias md2pdf='dotfiles_func_md2 pdf'
+}
+
+
 dotfiles_alias_e () {
    alias e='emacs -nw'
 }
@@ -85,6 +119,8 @@ dotfiles_init_all () {
 
     dotfiles_alias_e
     dotfiles_alias_man
+    dotfiles_alias_md2docx
+    dotfiles_alias_md2pdf
     dotfiles_alias_la
     dotfiles_alias_ll
     dotfiles_alias_sysupgrade
