@@ -74,6 +74,11 @@ dotfiles_alias_md2pdf () {
 }
 
 
+dotfiles_alias_mk () {
+    alias mk='make'
+}
+
+
 dotfiles_alias_e () {
    alias e='emacs -nw'
 }
@@ -127,6 +132,7 @@ dotfiles_init_all () {
     dotfiles_alias_man
     dotfiles_alias_md2docx
     dotfiles_alias_md2pdf
+    dotfiles_alias_mk
     dotfiles_alias_la
     dotfiles_alias_ll
     dotfiles_alias_sysupgrade
