@@ -40,6 +40,36 @@ dotfiles_history_increase_size () {
 }
 
 
+dotfiles_func_fixlines () {
+    if [[ $# == 0 ]] || [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]] ; then
+        cat <<EOF
+usage: fixlines [OPTION] [INPUT_FILE]...
+
+  -h, --help   this help message
+
+Change line ending from DOS(CR/LF)/old Mac(CR) to UNIX(LF).
+Requires dos2unix to work.
+EOF
+        return 1
+    fi
+
+    if ! command -v dos2unix &> /dev/null ; then
+        echo "error: missing dos2unix, please install" >&2
+        return 2
+    fi
+
+    for file in $* ; do
+        output_file="${file}.fixed"
+
+        if [ -e "${output_file}" ] ; then
+            echo "Output file exist, skipping: ${output_file}"
+        else
+            dos2unix -q -c ascii -n "${file}" "${output_file}" && dos2unix -q -c mac -o "${output_file}"
+        fi
+    done
+}
+
+
 dotfiles_func_md2 () {
     OUTPUT_FORMAT=$1
     INPUT_FILE=$2
@@ -80,7 +110,12 @@ dotfiles_alias_mk () {
 
 
 dotfiles_alias_e () {
-   alias e='emacs -nw'
+    alias e='emacs -nw'
+}
+
+
+dotfiles_alias_fixlines () {
+    alias fixlines='dotfiles_func_fixlines'
 }
 
 
@@ -129,6 +164,7 @@ dotfiles_init_all () {
     dotfiles_history_increase_size
 
     dotfiles_alias_e
+    dotfiles_alias_fixlines
     dotfiles_alias_man
     dotfiles_alias_md2docx
     dotfiles_alias_md2pdf
