@@ -135,7 +135,7 @@ dotfiles_alias_ll () {
 
 
 dotfiles_alias_sysupgrade () {
-    alias sysupgrade='sudo -- sh -c "apt-get update && apt-get dist-upgrade"'
+    alias sysupgrade='sudo -- sh -c "apt-get update && apt-get dist-upgrade && apt-get autoremove"'
 }
 
 
