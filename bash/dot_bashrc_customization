@@ -153,6 +153,9 @@ dotfiles_alias_omtt () {
     alias omtt='0install run omtt'
 }
 
+dotfiles_alias_rsyncpr () {
+    alias rsyncpr='rsync --info=progress2 -h -r'
+}
 
 dotfiles_init_all () {
     dotfiles_custom_PS1
@@ -174,6 +177,6 @@ dotfiles_init_all () {
     dotfiles_alias_sysupgrade
     dotfiles_alias_cd
     dotfiles_alias_cls
-
+    dotfiles_alias_rsyncpr
     dotfiles_alias_omtt
 }
