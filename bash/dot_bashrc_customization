@@ -135,7 +135,13 @@ dotfiles_alias_ll () {
 
 
 dotfiles_alias_sysupgrade () {
-    alias sysupgrade='sudo -- sh -c "apt-get update && apt-get dist-upgrade && apt-get autoremove"'
+    if command -v pkcon &> /dev/null ; then
+        alias sysupgrade='sudo -- sh -c "pkcon refresh && pkcon --autoremove update"'
+    elif command -v apt-get &> /dev/null ; then
+        alias sysupgrade='sudo -- sh -c "apt-get update && apt-get dist-upgrade && apt-get autoremove"'
+    else
+        alias sysupgrade='echo "No supported package manager found, install packagekit and source dotfiles again."'
+    fi
 }
 
 
