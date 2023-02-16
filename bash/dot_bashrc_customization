@@ -171,9 +171,9 @@ dotfiles_alias_rsyncpru () {
 }
 
 dotfiles_init_all () {
+    dotfiles_TERM
     dotfiles_custom_PS1
     dotfiles_init_pyenv
-    dotfiles_TERM
     dotfiles_dont_write_python_bytecode
 
     dotfiles_history_include_lines_begining_with_space
