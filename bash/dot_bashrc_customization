@@ -8,7 +8,7 @@ dotfiles_custom_PS1 () {
         host=""
     fi
 
-    PS1="\[\033[00m\][\t]${host} \[\033[01;34m\]\W\[\033[00m\] \[\033[31m\]\$?\[$(tput sgr0)\]$ "
+    PS1="\[\033[00m\][\t]${host} \[\033[01;34m\]\W\[\033[00m\] \[\033[31m\]\$?\[$(tput -T ansi sgr0)\]$ "
 }
 
 
@@ -23,11 +23,6 @@ dotfiles_init_pyenv () {
         eval "$(pyenv init -)"
         eval "$(pyenv init --path)"
     fi
-}
-
-
-dotfiles_TERM () {
-    export TERM=xterm-256color
 }
 
 
@@ -171,7 +166,6 @@ dotfiles_alias_rsyncpru () {
 }
 
 dotfiles_init_all () {
-    dotfiles_TERM
     dotfiles_custom_PS1
     dotfiles_init_pyenv
     dotfiles_dont_write_python_bytecode
