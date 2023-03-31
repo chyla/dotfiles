@@ -157,13 +157,17 @@ dotfiles_alias_cls () {
 }
 
 
-dotfiles_alias_omtt () {
-    alias omtt='0install run omtt'
-}
-
 dotfiles_alias_rsyncpru () {
     alias rsyncpru='rsync --info=progress2 -h -r -t --update'
 }
+
+
+dotfiles_conditionally_alias_omtt () {
+    if ! command -v omtt &> /dev/null ; then
+        alias omtt='0install run omtt'
+    fi
+}
+
 
 dotfiles_init_all () {
     dotfiles_custom_PS1
@@ -185,5 +189,6 @@ dotfiles_init_all () {
     dotfiles_alias_cd
     dotfiles_alias_cls
     dotfiles_alias_rsyncpru
-    dotfiles_alias_omtt
+
+    dotfiles_conditionally_alias_omtt
 }
