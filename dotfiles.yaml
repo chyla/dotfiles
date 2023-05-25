@@ -16,7 +16,7 @@
         line: "[init]"
         dest: /{{ HOME_PATH }}/.gitconfig
         create: true
-        mode: '0644'
+        mode: '0600'
     - name: ".gitconfig: init default branch"
       lineinfile:
         regexp: "\\s*defaultBranch =.*"
@@ -74,3 +74,4 @@
         line: "set nowrap"
         dest: /{{ HOME_PATH }}/.vimrc
         create: true
+        mode: 0600
