@@ -75,3 +75,7 @@
         dest: /{{ HOME_PATH }}/.vimrc
         create: true
         mode: 0600
+    - name: ".vimrc: Wq command"
+      lineinfile:
+        line: "command! Wq wq"
+        dest: /{{ HOME_PATH }}/.vimrc
