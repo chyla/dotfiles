@@ -4,3 +4,4 @@
         c = commit
         co = checkout
         wt = worktree
+        br = branch
