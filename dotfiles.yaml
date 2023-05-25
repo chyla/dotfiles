@@ -68,3 +68,9 @@
         src: /{{ REPO_PATH }}/pylint/dot_pylintrc
         dest: /{{ HOME_PATH }}/.pylintrc
         state: link
+
+    - name: ".vimrc: nowrap"
+      lineinfile:
+        line: "set nowrap"
+        dest: /{{ HOME_PATH }}/.vimrc
+        create: true
