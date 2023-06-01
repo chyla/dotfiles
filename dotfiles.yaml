@@ -83,3 +83,7 @@
       lineinfile:
         line: "command! Wq wq"
         dest: /{{ HOME_PATH }}/.vimrc
+    - name: ".vimrc: Q command"
+      lineinfile:
+        line: "command! Q q"
+        dest: /{{ HOME_PATH }}/.vimrc
