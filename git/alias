@@ -1,7 +1,9 @@
 [alias]
         flog = log --show-signature --pretty=fuller --date=format:'%d-%m-%Y %H:%M:%S %z (%A, %d %b)'
+        s = status
         st = status
         c = commit
         co = checkout
         wt = worktree
         br = branch
+        dif = diff
