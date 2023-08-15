@@ -96,6 +96,33 @@ dotfiles_func_md2 () {
 }
 
 
+dotfiles_func_tell () {
+    if [ "x${OPENAI_KEY}" = "x" ] ; then
+        echo "OPENAI_KEY environment variable not set." >&2
+        echo "Get your API key from https://platform.openai.com/account/api-keys" >&2
+        echo "and set it in ~/.bashrc with:" >&2
+        echo "    export OPENAI_KEY=YOUR_KEY_HERE" >&2
+        return 1
+    fi
+
+    if ! command -v jq &> /dev/null ; then
+        echo "jq not found, install with: sudo apt install jq" >&2
+        return 1
+    fi
+
+    if ! command -v curl &> /dev/null ; then
+        echo "curl not found, install with: sudo apt install curl" >&2
+        return 1
+    fi
+
+    DOTFILES_DIR=$(realpath $(dirname ${BASH_SOURCE[0]})/.. )
+    CHATGPT_SCRIPT_PATH=$(realpath ${DOTFILES_DIR}/ext/chatGPT-shell-cli/chatgpt.sh)
+
+    ALL_PARAMS="$*"
+    $CHATGPT_SCRIPT_PATH -p "${ALL_PARAMS}"
+}
+
+
 dotfiles_alias_md2docx () {
     alias md2docx='dotfiles_func_md2 docx'
 }
@@ -123,6 +150,10 @@ dotfiles_alias_fixlines () {
 
 dotfiles_alias_man () {
     alias ?='man'
+}
+
+dotfiles_alias_tell () {
+   alias tell='dotfiles_func_tell'
 }
 
 
@@ -183,6 +214,7 @@ dotfiles_init_all () {
     dotfiles_alias_md2docx
     dotfiles_alias_md2pdf
     dotfiles_alias_mk
+    dotfiles_alias_tell
     dotfiles_alias_la
     dotfiles_alias_ll
     dotfiles_alias_sysupgrade

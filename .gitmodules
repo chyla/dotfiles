@@ -1,0 +1,3 @@
+[submodule "ext/chatGPT-shell-cli"]
+	path = ext/chatGPT-shell-cli
+	url = https://github.com/0xacx/chatGPT-shell-cli.git
