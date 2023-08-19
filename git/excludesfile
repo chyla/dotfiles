@@ -4,6 +4,10 @@
 ### emacs ###
 \#*
 
+### Vagrant ###
+/.vagrant/
+/Vagrantfile
+
 ### misc ###
 TAGS
 tags
