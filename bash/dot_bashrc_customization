@@ -148,6 +148,11 @@ dotfiles_alias_fixlines () {
 }
 
 
+dotfiles_alias_g () {
+    alias g='git'
+}
+
+
 dotfiles_alias_man () {
     alias ?='man'
 }
@@ -210,6 +215,7 @@ dotfiles_init_all () {
 
     dotfiles_alias_e
     dotfiles_alias_fixlines
+    dotfiles_alias_g
     dotfiles_alias_man
     dotfiles_alias_md2docx
     dotfiles_alias_md2pdf
