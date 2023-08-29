@@ -96,6 +96,33 @@ dotfiles_func_md2 () {
 }
 
 
+dotfiles_func_open_in_browser () {
+    if [ "x${DISPLAY}" == "x" ] || [ "x{USE_X}" == "xn" ] ; then
+        BROWSER="links"
+        if ! command -v links &> /dev/null ; then
+            echo "links not found, install with: sudo apt install links" >&2
+            return 1
+        fi
+    else
+        BROWSER=xdg-open
+        if ! command -v xdg-open &> /dev/null ; then
+            echo "xdg-open not found, install with: sudo apt install xdg-open" >&2
+            return 1
+        fi
+    fi
+
+    URL="$1"
+    ${BROWSER} "${URL}"
+}
+
+
+dotfiles_func_so () {
+    SEARCH_QUERRY="$*"
+    SEARCH_URL="https://duckduckgo.com/?q=${SEARCH_QUERRY} site:stackoverflow.com"
+    dotfiles_func_open_in_browser "${SEARCH_URL}"
+}
+
+
 dotfiles_func_tell () {
     if [ "x${OPENAI_KEY}" = "x" ] ; then
         echo "OPENAI_KEY environment variable not set." >&2
@@ -156,6 +183,17 @@ dotfiles_alias_g () {
 dotfiles_alias_man () {
     alias ?='man'
 }
+
+
+dotfiles_alias_open_in_browser () {
+   alias open_in_browser='dotfiles_func_open_in_browser'
+}
+
+
+dotfiles_alias_so () {
+   alias so='dotfiles_func_so'
+}
+
 
 dotfiles_alias_tell () {
    alias tell='dotfiles_func_tell'
@@ -220,6 +258,8 @@ dotfiles_init_all () {
     dotfiles_alias_md2docx
     dotfiles_alias_md2pdf
     dotfiles_alias_mk
+    dotfiles_alias_open_in_browser
+    dotfiles_alias_so
     dotfiles_alias_tell
     dotfiles_alias_la
     dotfiles_alias_ll
