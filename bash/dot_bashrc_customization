@@ -31,6 +31,11 @@ dotfiles_dont_write_python_bytecode () {
 }
 
 
+dotfiles_cmake_ctest_output_on_failure () {
+    export CTEST_OUTPUT_ON_FAILURE=1
+}
+
+
 dotfiles_history_include_lines_begining_with_space () {
     export HISTCONTROL=
 }
@@ -247,6 +252,7 @@ dotfiles_init_all () {
     dotfiles_custom_PS1
     dotfiles_init_pyenv
     dotfiles_dont_write_python_bytecode
+    dotfiles_cmake_ctest_output_on_failure
 
     dotfiles_history_include_lines_begining_with_space
     dotfiles_history_increase_size
