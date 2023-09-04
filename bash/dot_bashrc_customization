@@ -97,7 +97,7 @@ dotfiles_func_md2 () {
 
 
 dotfiles_func_open_in_browser () {
-    if [ "x${DISPLAY}" == "x" ] || [ "x{USE_X}" == "xn" ] ; then
+    if [ "x${DISPLAY}" == "x" ] || [ "x${USE_X}" == "xn" ] ; then
         BROWSER="links"
         if ! command -v links &> /dev/null ; then
             echo "links not found, install with: sudo apt install links" >&2
