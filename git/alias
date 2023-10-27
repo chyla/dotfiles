@@ -8,3 +8,4 @@
         wt = worktree
         br = branch
         dif = diff
+        cp = cherry-pick
