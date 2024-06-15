@@ -69,6 +69,13 @@
         dest: /{{ HOME_PATH }}/.pylintrc
         state: link
 
+    - name: ".tmux.conf"
+      lineinfile:
+        line: 'set-option -sa terminal-overrides ",xterm*:Tc"'
+        dest: /{{ HOME_PATH }}/.tmux.conf
+        create: true
+        mode: 0600
+
     - name: ".vimrc: nowrap"
       lineinfile:
         line: "set nowrap"
