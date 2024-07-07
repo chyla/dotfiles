@@ -155,6 +155,43 @@ dotfiles_func_tell () {
 }
 
 
+dotfiles_func_terminal_truecolor_support () {
+    NUM_OF_PARAMS=$#
+    OPTION=$1
+
+    if [[ "x${OPTION}" == "x--help" ]] || [[ "x${OPTION}" == "x-h" ]] ; then
+        cat <<EOF
+usage: truecolor [OPTION]
+
+  -h, --help      this help message
+  -e, --enable    sets COLORTERM value
+  -d, --disable   unsets COLORTERM
+
+
+Exports COLORTERM with value 'truecolor' to indicate 24bit colors support.
+EOF
+        return 1
+    fi
+
+    echo "COLORTERM before change:" $COLORTERM
+
+    if [[ ${NUM_OF_PARAMS} == 0 ]] || [[ "x${OPTION}" == "x--enable" ]] || [[ "x${OPTION}" == "x-e" ]] ; then
+        export COLORTERM=truecolor
+    fi
+
+    if [[ "x${OPTION}" == "x--disable" ]] || [[ "x${OPTION}" == "x-d" ]] ; then
+        unset COLORTERM
+    fi
+
+    echo "COLORTERM after  change:" $COLORTERM
+}
+
+
+dotfiles_alias_truecolor () {
+    alias truecolor=dotfiles_func_terminal_truecolor_support
+}
+
+
 dotfiles_alias_md2docx () {
     alias md2docx='dotfiles_func_md2 docx'
 }
@@ -257,6 +294,7 @@ dotfiles_init_all () {
     dotfiles_history_include_lines_begining_with_space
     dotfiles_history_increase_size
 
+    dotfiles_alias_truecolor
     dotfiles_alias_e
     dotfiles_alias_fixlines
     dotfiles_alias_g
