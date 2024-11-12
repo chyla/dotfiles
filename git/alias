@@ -9,3 +9,4 @@
         br = branch
         dif = diff
         cp = cherry-pick
+        rpull = pull --rebase
