@@ -10,8 +10,8 @@
 /Vagrantfile
 
 ### misc ###
-TAGS
-tags
+TAGS*
+tags*
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux
